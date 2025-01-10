@@ -152,7 +152,7 @@ impl arc::A<WriterInputPixelBufAdaptor> {
     pub unsafe fn init_with_asset_writer_input_throws(
         self,
         input: &WriterInput,
-        src_pixel_buf_attrs: Option<ns::Dictionary<ns::String, ns::Id>>,
+        src_pixel_buf_attrs: Option<&ns::Dictionary<ns::String, ns::Id>>,
     ) -> arc::R<WriterInputPixelBufAdaptor>;
 }
 
@@ -161,7 +161,7 @@ impl WriterInputPixelBufAdaptor {
 
     pub fn with_input_writer<'ear>(
         input: &WriterInput,
-        src_pixel_buf_attrs: Option<ns::Dictionary<ns::String, ns::Id>>,
+        src_pixel_buf_attrs: Option<&ns::Dictionary<ns::String, ns::Id>>,
     ) -> ns::ExResult<'ear, arc::R<Self>> {
         ns::try_catch(|| unsafe {
             Self::alloc().init_with_asset_writer_input_throws(input, src_pixel_buf_attrs)
